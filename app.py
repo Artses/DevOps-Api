@@ -1,19 +1,32 @@
 from flask import Flask, jsonify
-from flask_mysqldb import MySQL 
 from config.db import Config
-from routes.bookRoutes import book_routes, init_routes
+from config.mysql import MySQL
+from routes.bookRoutes import create_book_blueprint
 
-app = Flask(__name__)
-app.config.from_object(Config)
+mysql = MySQL()
 
-mysql = MySQL(app)
-init_routes(mysql)
+def create_app(config_object=Config):
+    app = Flask(__name__)
+    app.config.from_object(config_object)
 
-app.register_blueprint(book_routes)
+    mysql.init_app(app)
+    app.register_blueprint(create_book_blueprint(mysql))
 
-@app.route("/")
-def home():
-    return jsonify({"message": "API Flask + MySQL rodando!"})
+    @app.route("/")
+    def home():
+        return jsonify({"status": "ok", "message": "Books API is running"})
+
+    @app.errorhandler(404)
+    def not_found(error):
+        return jsonify({"error": "Resource not found"}), 404
+
+    @app.errorhandler(500)
+    def internal_error(error):
+        return jsonify({"error": "Internal server error"}), 500
+
+    return app
+
+app = create_app()
 
 if __name__ == "__main__":
     app.run(debug=True)
