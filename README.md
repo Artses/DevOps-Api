@@ -1,10 +1,10 @@
-# 📚 Books API — Flask + MySQL on Kubernetes
+# Books API on Kubernetes
 
 A production-ready REST API for managing books, containerized with Docker and deployed on Kubernetes. Includes MySQL as a StatefulSet, Kustomize overlays for dev/prod, HPA autoscaling, and a full CI/CD pipeline with GitHub Actions.
 
 ---
 
-## 🗂 Project structure
+## Project structure
 
 ```
 books-api/
@@ -38,7 +38,7 @@ books-api/
 
 ---
 
-## 🏃 Quick start
+## Quick start
 
 ### Option 1 — Docker Compose (simplest)
 
@@ -70,7 +70,7 @@ curl http://localhost:5000/books
 
 ---
 
-## 🔗 API endpoints
+## API endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -85,7 +85,7 @@ curl http://localhost:5000/books
 
 ---
 
-## 🔑 GitHub Secrets required
+## GitHub Secrets required
 
 | Secret | Description |
 |--------|-------------|
@@ -96,7 +96,7 @@ curl http://localhost:5000/books
 
 ---
 
-## ⚠️ Key design decisions
+## Key design decisions
 
 **Why StatefulSet for MySQL?** Databases are stateful — they need a stable network identity and persistent storage. A Deployment would lose all data on pod restart.
 
