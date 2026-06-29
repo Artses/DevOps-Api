@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: books-api-service
+  namespace: books-api
+spec:
+  selector:
+    app: books-api       
+  ports:
+    - port: 80          
+      targetPort: 5000    
+  type: ClusterIP     
