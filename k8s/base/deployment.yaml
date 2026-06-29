@@ -16,7 +16,7 @@ spec:
       containers:
         - name: books-api
           image: arhurrr/devops-api:v1.1  
-          imagePullPolicy: Never
+          imagePullPolicy: Always 
           ports:
             - containerPort: 5000
           envFrom:
