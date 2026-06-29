@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  IMAGE_NAME: arhurrr/devops-api:v1.1   
+  IMAGE_NAME: arhurrr/devops-api   
   IMAGE_TAG: ${{ github.sha }}                     
 
 jobs:
