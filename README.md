@@ -30,9 +30,6 @@ books-api/
 │   └── overlays/
 │       ├── dev/                  # 1 replica, testdb_dev
 │       └── prod/                 # 3 replicas
-├── scripts/
-│   ├── local-setup.sh            # Spin up kind cluster + deploy
-│   └── create-secret.sh          # Apply secret from .env
 └── .github/workflows/ci-cd.yml   # Lint → Build → Dev → Prod (approval)
 ```
 
