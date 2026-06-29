@@ -14,7 +14,13 @@ def create_app(config_object=Config):
 
     @app.route("/")
     def home():
-        return jsonify({"status": "ok", "message": "Books API is running"})
+        try:
+            conn = mysql.connection
+            with conn.cursor() as cursor:
+                cursor.execute("SELECT 1")
+            return jsonify({"status": "ready"}), 200
+        except Exception:
+            return jsonify({"status": "not ready"}), 503
 
     @app.errorhandler(404)
     def not_found(error):
@@ -29,4 +35,4 @@ def create_app(config_object=Config):
 app = create_app()
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run(debug=True)
