@@ -13,5 +13,7 @@ patches:
       kind: Deployment
       name: books-api
 
-commonLabels:
-  environment: prod
+labels:
+  - pairs:
+      environment: prod
+
