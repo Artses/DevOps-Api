@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: books-api-config
+  namespace: books-api
+data:
+  MYSQL_HOST: "mysql-service"
+  MYSQL_USER: "root"
+  MYSQL_DB: "testdb"
